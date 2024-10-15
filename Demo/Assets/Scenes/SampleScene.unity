@@ -268,6 +268,51 @@ MonoBehaviour:
   start: {fileID: 8300000, guid: 43f8f2e006ba3fb49af9c9824b223546, type: 3}
   siren0Start: {fileID: 8300000, guid: 179c3b4e298d61549aaa30b3a88d2404, type: 3}
   siren0: {fileID: 8300000, guid: 385d5ca2d027a204eb85c756beb44daa, type: 3}
+--- !u!1 &346171968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346171970}
+  - component: {fileID: 346171969}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &346171969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346171968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfb61f5a97afa4190269134181b759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStarted: 0
+--- !u!4 &346171970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346171968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +374,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -420,7 +465,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1251704534, guid: 02fc3e213e9d1b54ea036d8e7d364cd4, type: 3}
+  m_Sprite: {fileID: 2065953509, guid: 02fc3e213e9d1b54ea036d8e7d364cd4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -493,7 +538,7 @@ GameObject:
   - component: {fileID: 1852876296}
   - component: {fileID: 1852876295}
   m_Layer: 0
-  m_Name: background
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,3 +619,4 @@ SceneRoots:
   - {fileID: 1852876296}
   - {fileID: 667279341}
   - {fileID: 138741630}
+  - {fileID: 346171970}

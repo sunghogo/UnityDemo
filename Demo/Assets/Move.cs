@@ -12,7 +12,6 @@ public enum Direction {
 
 public class Move : MonoBehaviour
 {
-
     public float moveSpeed = 5f;
     public Animator animator;
     public Direction playerDirection;
@@ -25,29 +24,30 @@ public class Move : MonoBehaviour
     {
         Vector2 moveVector = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            playerDirection = Direction.Up;
-            moveVector += Vector2.up;
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            playerDirection = Direction.Down;
-            moveVector += Vector2.down;
-        }
+        // if (GameState.Instance.isStarted) {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+                playerDirection = Direction.Up;
+                moveVector += Vector2.up;
+            }
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            {
+                playerDirection = Direction.Down;
+                moveVector += Vector2.down;
+            }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            playerDirection = Direction.Left;            
-            moveVector += Vector2.left;
-        }
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                playerDirection = Direction.Left;            
+                moveVector += Vector2.left;
+            }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            playerDirection = Direction.Right;            
-            moveVector += Vector2.right;
-
-        }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                playerDirection = Direction.Right;            
+                moveVector += Vector2.right;
+            }
+        // }
 
         if (moveVector == Vector2.zero) {
             animator.enabled = false;

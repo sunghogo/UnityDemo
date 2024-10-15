@@ -22,6 +22,7 @@ public class BGM : MonoBehaviour
             audioSource.clip = siren0Start;
             audioSource.Play();
         } else if (audioSource.clip == start && !audioSource.isPlaying) {
+            // GameState.Instance.isStarted = true;
             audioSource.clip = siren0Start;
             audioSource.Play();
         } else if (audioSource.clip == siren0Start && !audioSource.isPlaying) {
