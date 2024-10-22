@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BGM : MonoBehaviour
@@ -19,10 +17,7 @@ public class BGM : MonoBehaviour
     void Update()
     {
         if (audioSource.clip == start && !audioSource.isPlaying) {
-            audioSource.clip = siren0Start;
-            audioSource.Play();
-        } else if (audioSource.clip == start && !audioSource.isPlaying) {
-            // GameState.Instance.isStarted = true;
+            GameManager.Instance.StartGame();
             audioSource.clip = siren0Start;
             audioSource.Play();
         } else if (audioSource.clip == siren0Start && !audioSource.isPlaying) {

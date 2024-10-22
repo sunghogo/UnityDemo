@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -24,7 +22,7 @@ public class Move : MonoBehaviour
     {
         Vector2 moveVector = Vector2.zero;
 
-        // if (GameState.Instance.isStarted) {
+        if (GameManager.Instance.isStarted) {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 playerDirection = Direction.Up;
@@ -47,7 +45,7 @@ public class Move : MonoBehaviour
                 playerDirection = Direction.Right;            
                 moveVector += Vector2.right;
             }
-        // }
+        }
 
         if (moveVector == Vector2.zero) {
             animator.enabled = false;
