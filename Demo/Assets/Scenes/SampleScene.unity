@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 114520366}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.38, z: 0}
+  m_LocalPosition: {x: 1, y: 1.377, z: 0}
   m_LocalScale: {x: 1, y: 0.25, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -558,7 +558,7 @@ Transform:
   m_GameObject: {fileID: 211560351}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6333332, y: 0.5, z: 0}
+  m_LocalPosition: {x: 1.62, y: 0.5, z: 0}
   m_LocalScale: {x: 0.25, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1052,10 +1052,10 @@ GameObject:
   m_Component:
   - component: {fileID: 667279341}
   - component: {fileID: 667279340}
-  - component: {fileID: 667279342}
   - component: {fileID: 667279343}
   - component: {fileID: 667279345}
   - component: {fileID: 667279344}
+  - component: {fileID: 667279346}
   m_Layer: 0
   m_Name: Pacman
   m_TagString: Untagged
@@ -1124,29 +1124,12 @@ Transform:
   m_GameObject: {fileID: 667279338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.025, y: -1.975, z: -1}
+  m_LocalPosition: {x: 0.05, y: -1.95, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &667279342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667279338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6990032de0bcf5346bdb1f61ec90a1d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moveVector: {x: 0, y: 0}
-  animator: {fileID: 0}
-  playerDirection: 0
-  rayLength: 0.3
 --- !u!95 &667279343
 Animator:
   serializedVersion: 5
@@ -1240,6 +1223,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &667279346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667279338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6990032de0bcf5346bdb1f61ec90a1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  moveVector: {x: 0, y: 0}
+  nextMoveVector: {x: 0, y: 0}
+  playerDirection: 0
+  nextPlayerDirection: 0
+  animator: {fileID: 0}
+  rayLength: 0.05
 --- !u!1 &680712944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1268,7 @@ Transform:
   m_GameObject: {fileID: 680712944}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.38, z: 0}
+  m_LocalPosition: {x: 0, y: -0.375, z: 0}
   m_LocalScale: {x: 3, y: 0.25, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2029,7 +2031,7 @@ Transform:
   m_GameObject: {fileID: 1923498831}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 1.38, z: 0}
+  m_LocalPosition: {x: -1, y: 1.377, z: 0}
   m_LocalScale: {x: 1, y: 0.25, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
