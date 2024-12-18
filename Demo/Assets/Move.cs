@@ -1,4 +1,6 @@
+using System.Data.Common;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum Direction {
     Up,
@@ -19,11 +21,12 @@ public class Move : MonoBehaviour
     private LayerMask _obstaclesLayer;  
     private SpriteRenderer _spriteRenderer;
     public float rayLength;
+    bool isMirroring;
     
     // Box casts a box the size of sprite, shifted rayLength units towards the front
     private RaycastHit2D boxCast(Vector2 direction) {
         Vector2 size = new Vector2(_spriteRenderer.bounds.size.x, _spriteRenderer.bounds.size.y);
-        Vector2  origin = _rigidbody.position + size / 2;
+        Vector2 origin = _rigidbody.position + size / 2;
 
         return Physics2D.BoxCast(origin, size, 0f, direction, rayLength, _obstaclesLayer);
     }
@@ -32,7 +35,7 @@ public class Move : MonoBehaviour
     private bool isBlocked(Vector2 direction)
     {
         RaycastHit2D hit = boxCast(direction);
-        if (hit.collider != null) {
+        if (hit.collider != null && hit.collider.CompareTag("Obstacle")) {
             return true;  
         }
         return false;
@@ -47,6 +50,7 @@ public class Move : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _obstaclesLayer = LayerMask.GetMask("Obstacles");
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        isMirroring = false;
     }
 
     void OnDrawGizmos() {
@@ -57,7 +61,7 @@ public class Move : MonoBehaviour
         Vector2 endPoint = origin + (direction * rayLength);
 
         RaycastHit2D hit = boxCast(direction);
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.CompareTag("Obstacle"))
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(origin + direction * hit.distance, size);
@@ -66,6 +70,19 @@ public class Move : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireCube(endPoint, size);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Mirror") {
+            if (!isMirroring) transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
+            isMirroring = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Mirror") {
+            isMirroring = false;
         }
     }
     
