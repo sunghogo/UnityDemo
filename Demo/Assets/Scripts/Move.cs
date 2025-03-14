@@ -73,14 +73,14 @@ public class Move : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
+    void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Mirror") {
             if (!isMirroring) transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
             isMirroring = true;
         }
     }
 
-    void OnCollisionExit2D(Collision2D other) {
+    void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Mirror") {
             isMirroring = false;
         }

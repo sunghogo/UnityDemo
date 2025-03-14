@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -13,6 +12,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     [SerializeField] private float _rayLength;
     private LayerMask _obstaclesLayer;
+    public bool canTeleport;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +25,12 @@ public class Movement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _rayLength = 0.05F;
         _obstaclesLayer = LayerMask.GetMask("Obstacles");
-
+        canTeleport = true;
     }
 
     private RaycastHit2D boxCast(Vector2 direction) {
         Vector2 size = new Vector2(_spriteRenderer.bounds.size.x, _spriteRenderer.bounds.size.y);
-        Vector2 origin = _rigidbody.position + size / 2;
+        Vector2 origin = _rigidbody.position + size / 2; // if pacman is offset
 
         return Physics2D.BoxCast(origin, size, 0f, direction, _rayLength, _obstaclesLayer);
     }
@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
     void OnDrawGizmos() {
         if (_rigidbody == null || _spriteRenderer == null) return;
         Vector2 size = new Vector2(_spriteRenderer.bounds.size.x, _spriteRenderer.bounds.size.y);
-        Vector2 origin = _rigidbody.position + size / 2;
+        Vector2 origin = _rigidbody.position + size / 2; // if pacman is offset
         Vector2 endPoint = origin + (_direction * _rayLength);
 
         RaycastHit2D hit = boxCast(_direction);
@@ -57,6 +57,31 @@ public class Movement : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireCube(endPoint, size);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        // Debug.Log(other.gameObject.tag);
+        if (other.gameObject.CompareTag("Mirror") && canTeleport) {
+            transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
+            canTeleport = false;
+            // Debug.Log("Teleporting");
+        }
+    }
+
+    // void OnTriggerStay2D(Collider2D other) {
+    //     // Debug.Log(other.gameObject.tag);
+    //     if (other.gameObject.CompareTag("Mirror") && canTeleport) {
+    //         transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
+    //         canTeleport = false;
+    //         Debug.Log("Teleporting");
+    //     }
+    // }
+
+    void OnTriggerExit2D(Collider2D other) {
+        // Debug.Log("Leaving");
+        if (other.gameObject.CompareTag("Mirror")) {
+            canTeleport = true;
         }
     }
 
@@ -75,8 +100,8 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             _nextDirection = Vector2.left;
         }
-
         if (!isColliding(_nextDirection)) _direction = _nextDirection;
+        
         if (_direction == Vector2.up) {
             animator.SetBool("Up", true);
             animator.SetBool("Down", false);
